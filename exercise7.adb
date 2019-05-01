@@ -47,15 +47,16 @@ procedure exercise7 is
 
     function Unreliable_Slow_Add (x : Integer) return Integer is
     Error_Rate : Constant := 0.15;  -- (between 0 and 1)
+ 
     begin
         -------------------------------------------
         -- PART 1: Create the transaction work here
         -------------------------------------------
-	RandomNumber : = Random(Gen);
-	if RandomNumber < Error_Rate then 
+	
+	if Random(Gen) < Error_Rate then 
 	   raise Count_Failed;			-- raise = throw 
 	else 
-	   delay 4*Duration(RandomNumber);
+	   delay 4*Duration(Random(Gen));
 	   return x+10;
 	end if;   
 	--------------------------------------------
@@ -108,6 +109,8 @@ procedure exercise7 is
     Worker_3 : Transaction_Worker (2, Manager'Access);
 
 begin
-    Reset(Gen); -- Seed the random number generator
+    Reset(Gen); -- Seed the 
+
+ --number generator
 end exercise7;
 
